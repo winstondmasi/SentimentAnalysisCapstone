@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <title>Twitter Emotion Timeline</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.1.0/wordcloud2.min.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>Twitter Sentiment Analysis</h1>
+        </header>
+
+        <nav>
+            <button id="btnKaggle">Kaggle Version</button>
+            <button id="btnAPI">API Version</button>
+        </nav>
+
+        <main class="main-container">
+            <section id="kaggleSection" class="hidden content-section">
+                <!-- Kaggle Version content goes here -->
+                <form id="kaggleForm"
+                    onsubmit="event.preventDefault(); analyzeSentiment(document.getElementById('kaggleUsername').value);">
+                    <input list="usernames" id="kaggleUsername" placeholder="Enter username"
+                        oninput="searchUsernames(this.value)" required>
+                    <button type="submit">Analyze Tweets</button>
+                    <datalist id="usernames">
+                        <!-- Usernames options will be dynamically inserted here -->
+                    </datalist>
+                </form>
+                <div id="results" class="results-container">
+                    <!-- Results will be displayed here -->
+                </div>
+            </section>
+
+            <section id="apiSection">
+                <!-- Your existing form and results for API version -->
+                <form id="twitterForm">
+                    <input list="usernames" id="username" placeholder="Enter username" oninput="searchUsernames(this.value)"
+                        required>
+                    <button type="submit">Analyze Tweets</button>
+                    <datalist id="usernames">
+                        <!-- Usernames options will be dynamically inserted here -->
+                    </datalist>
+                </form>
+                <div id="results" class="results-container">
+                    <!-- Results will be displayed here -->
+                </div>
+            </section>
+
+            <section id="visualizationSection" class="content-section">
+                <!-- Graphs and visualizations will go here -->
+                <div class="chart-container">
+                    <canvas id="sentimentOverTimeChart"></canvas>
+                </div>
+                <canvas id="sentimentPieChart"></canvas>
+                <div class="calendar-heatmap">
+                    <div class="month" id="jan">
+                        <div class="days-container"></div>
+                        <span class="month-label">Jan</span>
+                    </div>
+                    <div class="month" id="feb">
+                        <div class="days-container"></div>
+                        <span class="month-label">Feb</span>
+                    </div>
+                    <div class="month" id="mar">
+                        <div class="days-container"></div>
+                        <span class="month-label">Mar</span>
+                    </div>
+                    <div class="month" id="apr">
+                        <div class="days-container"></div>
+                        <span class="month-label">Apr</span>
+                    </div>
+                    <div class="month" id="may">
+                        <div class="days-container"></div>
+                        <span class="month-label">May</span>
+                    </div>
+                    <div class="month" id="jun">
+                        <div class="days-container"></div>
+                        <span class="month-label">Jun</span>
+                    </div>
+                    <div class="month" id="jul">
+                        <div class="days-container"></div>
+                        <span class="month-label">Jul</span>
+                    </div>
+                    <div class="month" id="aug">
+                        <div class="days-container"></div>
+                        <span class="month-label">Aug</span>
+                    </div>
+                    <div class="month" id="sep">
+                        <div class="days-container"></div>
+                        <span class="month-label">Sep</span>
+                    </div>
+                    <div class="month" id="oct">
+                        <div class="days-container"></div>
+                        <span class="month-label">Oct</span>
+                    </div>
+                    <div class="month" id="nov">
+                        <div class="days-container"></div>
+                        <span class="month-label">Nov</span>
+                    </div>
+                    <div class="month" id="dec">
+                        <div class="days-container"></div>
+                        <span class="month-label">Dec</span>
+                    </div>
+                </div>
+                
+                <canvas id="wordCloudChart" width="700" height="700"></canvas>                       
+            </section>
+
+            <!-- Loading Screen -->
+            <div id="loadingScreen" class="loading-screen">
+                <div class="loading-spinner"></div>
+                <p>Analyzing sentiment...</p>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress" id="progress"></div>
+                </div>  
+            </div>
+        </main>
+
+        <script src="{% static 'scripts.js' %}"></script>
+    </body>
+
+</html>

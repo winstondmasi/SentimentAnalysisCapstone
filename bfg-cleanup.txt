@@ -1,0 +1,6 @@
+backend/db.sqlite3
+backend/kaggle_dataset/fitered.training.1194723.csv
+backend/kaggle_dataset/modified_dates_file.csv
+backend/kaggle_dataset/training.1600000.processed.noemoticon.csv
+venv/lib/python3.9/site-packages/torch/lib/libtorch_cpu.dylib
+backend/api/utils/saved-model/model.safetensors
