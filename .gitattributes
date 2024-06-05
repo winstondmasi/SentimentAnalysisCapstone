@@ -1,6 +1,2 @@
 backend/db.sqlite3 filter=lfs diff=lfs merge=lfs -text
-backend/kaggle_dataset/fitered.training.1194723.csv filter=lfs diff=lfs merge=lfs -text
-backend/kaggle_dataset/modified_dates_file.csv filter=lfs diff=lfs merge=lfs -text
-backend/kaggle_dataset/training.1600000.processed.noemoticon.csv filter=lfs diff=lfs merge=lfs -text
-venv/lib/python3.9/site-packages/torch/lib/libtorch_cpu.dylib filter=lfs diff=lfs merge=lfs -text
 backend/api/utils/saved-model/model.safetensors filter=lfs diff=lfs merge=lfs -text
